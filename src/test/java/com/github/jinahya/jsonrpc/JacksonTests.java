@@ -1,4 +1,4 @@
-package com.github.jinahya.jsonrpc.glue.v2.jackson;
+package com.github.jinahya.jsonrpc;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import static com.github.jinahya.jsonrpc.glue.JsonrpcGlueTests.applyResourceStream;
-import static com.github.jinahya.jsonrpc.util.BeanValidationUtils.requireValid;
+import static com.github.jinahya.jsonrpc.BeanValidations.requireValid;
+import static com.github.jinahya.jsonrpc.JsonrpcTests.applyResourceStream;
 import static java.util.Objects.requireNonNull;
 
 @Slf4j
-final class JacksonTests {
+public final class JacksonTests {
 
     /**
      * A shared instance of object mapper.

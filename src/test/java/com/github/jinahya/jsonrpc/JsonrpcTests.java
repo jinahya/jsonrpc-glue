@@ -1,4 +1,4 @@
-package com.github.jinahya.jsonrpc.glue;
+package com.github.jinahya.jsonrpc;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,7 +11,7 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Slf4j
-public class JsonrpcGlueTests {
+public class JsonrpcTests {
 
     /**
      * Applies a stream of specified resource to specified function and returns the result.
@@ -33,7 +33,7 @@ public class JsonrpcGlueTests {
         }
     }
 
-    private JsonrpcGlueTests() {
+    private JsonrpcTests() {
         throw new AssertionError("instantiation is not allowed");
     }
 }

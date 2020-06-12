@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import static com.github.jinahya.jsonrpc.glue.v2.JsonrpcMessageGlueHelper.get;
 import static com.github.jinahya.jsonrpc.glue.v2.JsonrpcMessageGlueHelper.set;
 
-public interface IJsonrpcResponseMessageErrorGlue<CodeType, MessageType, DataType> {
+public interface IJsonrpcResponseMessageErrorGlue<CodeType, MessageType, DataType> extends IJsonrpcObjectGlue {
 
     String PROPERTY_NAME_CODE = "code";
 

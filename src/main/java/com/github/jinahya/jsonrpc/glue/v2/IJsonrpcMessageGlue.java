@@ -4,7 +4,7 @@ import javax.validation.constraints.AssertTrue;
 
 import static com.github.jinahya.jsonrpc.glue.v2.JsonrpcMessageGlueHelper.get;
 
-public interface IJsonrpcMessageGlue<JsonrpcType, IdType> {
+public interface IJsonrpcMessageGlue<JsonrpcType, IdType> extends IJsonrpcObjectGlue {
 
     String MEMBER_NAME_JSONRPC = "jsonrpc";
 

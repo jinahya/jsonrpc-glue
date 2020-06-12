@@ -1,4 +1,4 @@
-package com.github.jinahya.jsonrpc.util;
+package com.github.jinahya.jsonrpc;
 
 import org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator;
 
@@ -15,7 +15,7 @@ import static javax.validation.Validation.byDefaultProvider;
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-public class BeanValidationUtils {
+public class BeanValidations {
 
     /**
      * An instance of (thread-safe) {@link ValidatorFactory}.
@@ -84,7 +84,7 @@ public class BeanValidationUtils {
     /**
      * Creates a new instance, my ass.
      */
-    private BeanValidationUtils() {
+    private BeanValidations() {
         throw new AssertionError("instantiation is not allowed");
     }
 }

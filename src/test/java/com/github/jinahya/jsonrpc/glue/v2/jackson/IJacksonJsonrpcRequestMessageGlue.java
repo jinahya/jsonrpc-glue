@@ -10,7 +10,7 @@ import com.github.jinahya.jsonrpc.glue.v2.IJsonrpcRequestMessageGlue;
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.AssertTrue;
 
-interface IJacksonRequestMessageGlue
+public interface IJacksonJsonrpcRequestMessageGlue
         extends IJsonrpcRequestMessageGlue<TextNode, TextNode, ContainerNode<?>, ValueNode> {
 
     @Override

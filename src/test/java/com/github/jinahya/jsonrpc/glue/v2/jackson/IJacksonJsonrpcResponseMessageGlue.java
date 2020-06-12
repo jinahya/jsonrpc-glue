@@ -8,9 +8,9 @@ import com.github.jinahya.jsonrpc.glue.v2.IJsonrpcResponseMessageGlue;
 
 import javax.validation.constraints.AssertTrue;
 
-interface IJacksonResponseMessageGlue
+public interface IJacksonJsonrpcResponseMessageGlue
         extends IJsonrpcResponseMessageGlue<TextNode, BaseJsonNode, ObjectNode, ValueNode>,
-                IJacksonMessageGlue {
+                IJacksonJsonrpcMessageGlue {
 
     @Override
     default @AssertTrue boolean isResultContextuallyValid() {

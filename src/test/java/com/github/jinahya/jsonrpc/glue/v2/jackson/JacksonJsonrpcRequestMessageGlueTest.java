@@ -10,33 +10,34 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.Iterator;
 
-import static com.github.jinahya.jsonrpc.glue.JsonrpcGlueTests.applyResourceStream;
-import static com.github.jinahya.jsonrpc.glue.v2.jackson.JacksonTests.applyObjectMapper;
-import static com.github.jinahya.jsonrpc.util.BeanValidationUtils.requireValid;
+import static com.github.jinahya.jsonrpc.BeanValidations.requireValid;
+import static com.github.jinahya.jsonrpc.JacksonTests.applyObjectMapper;
+import static com.github.jinahya.jsonrpc.JsonrpcTests.applyResourceStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
-class JacksonRequestMessageGlueTest {
+class JacksonJsonrpcRequestMessageGlueTest {
 
     @Test
     void jsonrpc_org_positional_parameters_01_request() throws IOException {
         applyResourceStream(
-                "jsonrpc.org/positional_parameters_01_request.json",
+                "examples/jsonrpc.org/positional_parameters_01_request.json",
                 s -> {
                     return applyObjectMapper(m -> {
                         try {
-                            final JacksonRequestMessageGlue value = m.readValue(s, JacksonRequestMessageGlue.class);
-                            log.debug("value: {}", value);
-                            requireValid(value);
-                            assertEquals("subtract", value.getMethod().asText());
-                            assertTrue(value.getParams() instanceof ArrayNode);
-                            assertEquals(42, value.getParams().get(0).asInt());
-                            assertEquals(23, value.getParams().get(1).asInt());
-                            assertTrue(value.getId() instanceof IntNode);
-                            assertEquals(1, value.getId().asInt());
+                            final JacksonJsonrpcRequestMessageGlue message
+                                    = m.readValue(s, JacksonJsonrpcRequestMessageGlue.class);
+                            log.debug("value: {}", message);
+                            requireValid(message);
+                            assertEquals("subtract", message.getMethod().asText());
+                            assertTrue(message.getParams() instanceof ArrayNode);
+                            assertEquals(42, message.getParams().get(0).asInt());
+                            assertEquals(23, message.getParams().get(1).asInt());
+                            assertTrue(message.getId() instanceof IntNode);
+                            assertEquals(1, message.getId().asInt());
                         } catch (final IOException ioe) {
                             throw new UncheckedIOException(ioe);
                         }
@@ -49,11 +50,11 @@ class JacksonRequestMessageGlueTest {
     @Test
     void jsonrpc_org_positional_parameters_02_request() throws IOException {
         applyResourceStream(
-                "jsonrpc.org/positional_parameters_02_request.json",
+                "examples/jsonrpc.org/positional_parameters_02_request.json",
                 s -> {
                     return applyObjectMapper(m -> {
                         try {
-                            final JacksonRequestMessageGlue value = m.readValue(s, JacksonRequestMessageGlue.class);
+                            final JacksonJsonrpcRequestMessageGlue value = m.readValue(s, JacksonJsonrpcRequestMessageGlue.class);
                             log.debug("value: {}", value);
                             requireValid(value);
                             assertEquals("subtract", value.getMethod().asText());
@@ -74,11 +75,11 @@ class JacksonRequestMessageGlueTest {
     @Test
     void jsonrpc_org_named_parameters_01_request() throws IOException {
         applyResourceStream(
-                "jsonrpc.org/named_parameters_01_request.json",
+                "examples/jsonrpc.org/named_parameters_01_request.json",
                 s -> {
                     return applyObjectMapper(m -> {
                         try {
-                            final JacksonRequestMessageGlue value = m.readValue(s, JacksonRequestMessageGlue.class);
+                            final JacksonJsonrpcRequestMessageGlue value = m.readValue(s, JacksonJsonrpcRequestMessageGlue.class);
                             log.debug("value: {}", value);
                             requireValid(value);
                             assertEquals("subtract", value.getMethod().asText());
@@ -103,11 +104,11 @@ class JacksonRequestMessageGlueTest {
     @Test
     void jsonrpc_org_named_parameters_02_request() throws IOException {
         applyResourceStream(
-                "jsonrpc.org/named_parameters_02_request.json",
+                "examples/jsonrpc.org/named_parameters_02_request.json",
                 s -> {
                     return applyObjectMapper(m -> {
                         try {
-                            final JacksonRequestMessageGlue value = m.readValue(s, JacksonRequestMessageGlue.class);
+                            final JacksonJsonrpcRequestMessageGlue value = m.readValue(s, JacksonJsonrpcRequestMessageGlue.class);
                             log.debug("value: {}", value);
                             requireValid(value);
                             assertEquals("subtract", value.getMethod().asText());
@@ -132,11 +133,11 @@ class JacksonRequestMessageGlueTest {
     @Test
     void notification_01_request() throws IOException {
         applyResourceStream(
-                "jsonrpc.org/notification_01_request.json",
+                "examples/jsonrpc.org/notification_01_request.json",
                 s -> {
                     return applyObjectMapper(m -> {
                         try {
-                            final JacksonRequestMessageGlue value = m.readValue(s, JacksonRequestMessageGlue.class);
+                            final JacksonJsonrpcRequestMessageGlue value = m.readValue(s, JacksonJsonrpcRequestMessageGlue.class);
                             log.debug("value: {}", value);
                             requireValid(value);
                             assertEquals("update", value.getMethod().asText());
@@ -159,11 +160,11 @@ class JacksonRequestMessageGlueTest {
     @Test
     void notification_02_request() throws IOException {
         applyResourceStream(
-                "jsonrpc.org/notification_02_request.json",
+                "examples/jsonrpc.org/notification_02_request.json",
                 s -> {
                     return applyObjectMapper(m -> {
                         try {
-                            final JacksonRequestMessageGlue value = m.readValue(s, JacksonRequestMessageGlue.class);
+                            final JacksonJsonrpcRequestMessageGlue value = m.readValue(s, JacksonJsonrpcRequestMessageGlue.class);
                             log.debug("value: {}", value);
                             requireValid(value);
                             assertEquals("foobar", value.getMethod().asText());
@@ -180,11 +181,11 @@ class JacksonRequestMessageGlueTest {
     @Test
     void non_existent_method_request() throws IOException {
         applyResourceStream(
-                "jsonrpc.org/non_existent_method_request.json",
+                "examples/jsonrpc.org/non_existent_method_request.json",
                 s -> {
                     return applyObjectMapper(m -> {
                         try {
-                            final JacksonRequestMessageGlue value = m.readValue(s, JacksonRequestMessageGlue.class);
+                            final JacksonJsonrpcRequestMessageGlue value = m.readValue(s, JacksonJsonrpcRequestMessageGlue.class);
                             log.debug("value: {}", value);
                             requireValid(value);
                             assertEquals("foobar", value.getMethod().asText());
